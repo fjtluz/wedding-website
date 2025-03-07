@@ -1,0 +1,12 @@
+@use 'tailwindcss';
+
+.photos > * {
+  @apply lg:flex-1 
+    lg:scale-75 
+    lg:hover:rotate-none 
+    lg:hover:scale-none
+    lg:transition-[rotate,scale]
+    lg:duration-350;
+
+  @apply scale-90;
+}
