@@ -1,9 +1,24 @@
-<div class="flex px-10 text-[2rem] bg-[#6F9D63] text-white w-full h-[8vh] items-center">
-    <p class="flex-1 font-bold">Ana e Francisco</p>
-    <ul class="flex-1 flex justify-end gap-10">
+<div class="flex px-10 text-[1rem] lg:text-[2rem] bg-[#6F9D63] text-white w-full h-[8vh] items-center">
+    <p class="flex-1 font-bold text-center">Ana e Francisco</p>
+    <ul class="lg:flex justify-end gap-10 hidden">
         <li>Home</li>
         <li>Presença</li>
         <li>Presentes</li>
         <li>Informações</li>
     </ul>
+    <button (click)="displayOptionsMobile = !displayOptionsMobile">
+        <div class="size-[25px] flex flex-col items-center justify-around cursor-pointer">
+            <div class="w-[90%] h-[7.5%] bg-[#444444]"></div>
+            <div class="w-[90%] h-[7.5%] bg-[#444444]"></div>
+            <div class="w-[90%] h-[7.5%] bg-[#444444]"></div>
+        </div>
+    </button>
 </div>
+@if (displayOptionsMobile) {
+<ul class="lg:hidden h-[92vh] flex flex-col justify-center items-center">
+    <li>Home</li>
+    <li>Presença</li>
+    <li>Presentes</li>
+    <li>Informações</li>
+</ul>
+}

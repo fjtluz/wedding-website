@@ -1,27 +1,15 @@
 import { Component, computed, signal } from '@angular/core';
 import { PhotoComponent } from "./photo/photo.component";
-import {NgStyle} from '@angular/common';
 
 const WEDDING_DAY = new Date(2025, 10, 1, 0, 0, 0, 0);
 
 @Component({
   selector: 'app-home',
-  imports: [PhotoComponent, NgStyle],
+  imports: [PhotoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-
-    public arabescos = [
-        ['-45px', '60px'], 
-        ['-110px', '100px'], 
-        ['-230px', '50px'], 
-        ['-275px', '100px'],
-        ['-365px', '80px'],
-        ['-450px', '80px'],
-        ['-530px', '80px'],
-        ['-612px', '80px'],
-    ]
 
     public now = signal(new Date()); 
     public timeTillWedding = computed(() => {

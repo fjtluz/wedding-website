@@ -1,4 +1,8 @@
-<div class="min-h-[92vh] size-full flex flex-col items-center gap-10 pt-10">
+<div class="min-h-[92vh] size-full flex flex-col items-center pt-10">
+    <div class="text-center">
+        <h2 class="text-[2.5rem] uppercase font-bold">Casamento Ana e Francisco</h2>
+        <img src="assets/arabesco_final.svg" class="scale-100" />
+    </div>
     <div class="photos flex flex-col lg:flex-row lg:gap-10 lg:flex-wrap relative">
         <div  class="rotate-10">
             <app-photo src="assets/PRE_CONVITE.JPG"/>
@@ -10,15 +14,7 @@
             <app-photo src="assets/PRE_CONVITE.JPG"/>
         </div>
     </div>
-    <div class="flex flex-col items-center">
-        @for (row of arabescos; track row) {
-            @for (col of ['-36px', '-258px']; track col) {
-            <h2 class="text-[2.5rem] uppercase font-bold">Casamento Ana Letícia e Francisco Luz</h2>
-            <div style="background-image: url('/assets/arabescos.png')" 
-                [ngStyle]="{ 'background-position-x': col, 'background-position-y': row[0], height: row[1]  }"
-                class="w-[220px] scale-150"></div>
-            }
-        }
+    <div class="flex flex-col items-center text-center">
         <h2 class="text-[2rem] font-[500]">O casamento acontecerá em:</h2>
         <h3 class="text-[2rem]">{{ timeTillWedding() }}</h3>
     </div>
