@@ -1,0 +1,57 @@
+<div class="bg-[url('/assets/background.jpg')] flex flex-col h-[92vh]">
+    <div class="w-full h-[32vh] flex flex-col justify-center items-center my-[20px]">
+        <h1 class="font-[Garamond] text-[3.5rem] sm:text-[6rem] text-[#6F9D63] text-center leading-none">Confirmação de presença</h1>
+        <p class="pt-[20px] font-[Garamond] text-[2.5rem] text-center">A presença deve ser confirmada até 01/OUT/2025</p>
+    </div>
+    <div class="bg-[#6F9D63] w-full h-[30vh] flex flex-col justify-center items-center gap-[20px] font-[Questrial]">
+        <div class="flex flex-col gap-[3px]">
+            <label for="completeName" class="text-white text-[18pt]">Nome completo:</label>
+            <input 
+                [(ngModel)]="guestName" id="completeName" 
+                class="bg-white confirmation-input border 
+                       border-[lightgray] py-[10px] px-[7px] 
+                       rounded-lg w-[400px] text-center"
+                [ngClass]="nameNotFound ? 'not-found' : undefined"                
+            />
+            @if (nameNotFound) {
+                <div class="flex gap-[5px] items-center">
+                <svg class="size-[11pt]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="red"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>
+                <span class="font-bold text-[11pt]">Convidado não encontrado</span>
+                </div>
+            }
+        </div>
+        <div class="w-[400px] flex items-center gap-[10px] justify-between">
+            <label class="text-white text-[18pt]">Você irá ao evento?</label>
+            <div class="inline-flex justify-between gap-[10px]">
+                <label class="flex items-center">
+                    <input [(ngModel)]="willAttend" name="confirmation" type="radio" [value]="true" class="radio-confirmation appearance-none w-5 h-5 rounded-full border-2 border-gray-300 relative" />
+                    <span class="text-white text-[18pt] ml-2">Sim</span>
+                </label>
+                <label class="flex items-center">
+                    <input [(ngModel)]="willAttend" name="confirmation" type="radio" [value]="false" class="radio-confirmation appearance-none w-5 h-5 rounded-full border-2 border-gray-300 relative" />
+                    <span class="text-white text-[18pt] ml-2">Não</span>
+                </label>
+            </div>
+        </div>
+        <div (click)="handleConfirmation()"  class="confirmation-button w-[400px] h-[50px] border border-white rounded text-white flex justify-center items-center hover:cursor-pointer">
+            <span class="text-[18pt]">Responder</span>
+        </div>
+    </div>
+</div>
+
+@if (showModal) {
+    <div class="absolute top-0 left-0 size-full flex justify-center items-center">
+        <div class="w-1/1 h-5/6 sm:w-5/10 sm:h-2/3 bg-[#fefefe] inline-flex flex-col items-center justify-around gap-[10px] rounded-xl">
+            <div class="flex justify-center items-center size-1/3">
+                <svg class="size-1/1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#6F9D63"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
+            </div>
+            <div>
+                <h2 class="font-[Questrial] text-[32pt] text-center">Resposta recebida com sucesso!</h2>
+                <p class="font-[Questrial] text-[20pt] px-[15%] text-center">Caso deseje responder em nome de outras pessoas, apenas digite um novo nome e aperte novamente em Responder!</p>
+            </div>
+            <div (click)="closeModal()" class="confirmation-button w-[400px] h-[50px] bg-[#6F9D63] border border-white rounded text-white flex justify-center items-center hover:cursor-pointer">
+               <span class="text-[18pt]">Ok</span>
+            </div>
+        </div>
+    </div>
+}

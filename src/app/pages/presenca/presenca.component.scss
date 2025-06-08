@@ -1,0 +1,57 @@
+@use 'tailwindcss';
+
+.confirmation-input {
+  transition-property: border-color, box-shadow;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;  
+
+  &:hover {
+    border-color: #5588bb;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #7096ff;
+    border-color: #5588bb;
+  }
+}
+
+#completeName.not-found {
+  border-color: red;
+}
+
+.confirmation-button {
+
+  transition-property: background-color, color;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+
+  &:hover {
+    background-color: white;
+    color: #6F9D63;
+    border-color: #6F9D63;
+  }
+}
+
+.radio-confirmation {
+  background-color: white;
+}
+
+.radio-confirmation::before {
+  content: '';
+  background-color: #6F9D63;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.radio-confirmation:checked::before {
+  opacity: 1;
+}

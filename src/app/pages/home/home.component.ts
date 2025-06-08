@@ -3,6 +3,13 @@ import { PhotoComponent } from "./photo/photo.component";
 
 const WEDDING_DAY = new Date(2025, 10, 1, 0, 0, 0, 0);
 
+interface Time {
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
+}
+
 @Component({
   selector: 'app-home',
   imports: [PhotoComponent],
@@ -12,7 +19,7 @@ const WEDDING_DAY = new Date(2025, 10, 1, 0, 0, 0, 0);
 export class HomeComponent {
 
     public now = signal(new Date()); 
-    public timeTillWedding = computed(() => {
+    public timeTillWedding = computed<Time>(() => {
         const nowTime = this.now().getTime();
         const weddingTime = WEDDING_DAY.getTime();
 
@@ -33,7 +40,12 @@ export class HomeComponent {
         let seconds = remainder * 60;
         seconds = Math.floor(seconds);
 
-        return `${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos.`;
+        return {
+            days,
+            hours,
+            minutes,
+            seconds
+        } 
     });
 
     constructor() {

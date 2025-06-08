@@ -1,21 +1,30 @@
-<div class="min-h-[92vh] size-full flex flex-col items-center pt-10">
-    <div class="text-center">
-        <h2 class="text-[2.5rem] uppercase font-bold">Casamento Ana e Francisco</h2>
-        <img src="assets/arabesco_final.svg" class="scale-100" />
-    </div>
-    <div class="photos flex flex-col lg:flex-row lg:gap-10 lg:flex-wrap relative">
-        <div  class="rotate-10">
-            <app-photo src="assets/PRE_CONVITE.JPG"/>
+<div class="bg-[url('/assets/background.jpg')] overflow-hidden min-h-[92vh] size-full flex flex-col items-center">
+    <div class="grid grid-cols-1 sm:grid-cols-2 items-center">
+        <div class="flex justify-center items-center min-h-[45vh]">
+            <img src="assets/arco.png" class="scale-[150%] sm:scale-[100%]" />
         </div>
-        <div class="-rotate-12">
-            <app-photo src="assets/PRE_CONVITE.JPG"/>
+        <div class="flex items-center justify-around gap-[10px] min-h-[45vh] text-black pl-[10%] sm:pl-[1%] pr-[10%] pt-[5%] sm:pt-[0]">
+            <p class="font-[Questrial] text-[13pt] sm:text-[20pt] text-justify">
+                Nossa história começou em 2018 quando nos conhecemos na faculdade, viramos amigos, mas aquele ainda não era o momento em que nos tornaríamos inseparáveis. Dois anos se passaram sem que nos encontrássemos, até que nos esbarramos por acaso. Porém, o destino deu mais uma segurada no nosso romance, já que logo em seguida veio a pandemia. Depois de um tempo só conversando pelo celular, nossa história de amor finalmente seguiu em frente, e hoje estamos aqui para dar o próximo passo e convidamos vocês para fazer parte desse nosso novo capítulo.
+            </p> 
         </div>
-        <div class="-rotate-5">
-            <app-photo src="assets/PRE_CONVITE.JPG"/>
+        <div class="flex flex-col items-center justify-center text-center bg-[#6F9D63] min-h-[50vh] font-[Questrial]">
+            <h2 class="text-[1.5rem] lg:text-[2rem] font-[500] text-white">O casamento acontecerá em:</h2>
+            <h3 class="text-[1.5rem] lg:text-[2rem] text-white">
+                @let time = timeTillWedding();
+                {{ time.days }} dias, {{ time.hours }} horas<br class="static lg:hidden"/>
+                {{ time.minutes}} minutos e {{ time.seconds }} segundos
+            </h3>
+            <h2 class="text-white text-[14pt]">Cerimônia: Igreja Luterana da Velha - R. Bruno Hering - Velha</h2>
+            <h2 class="text-white text-[14pt]">Recepção: Espaço Clasic Rivage - R. 25 de Julho, 907 - Itoupava Norte</h2>
         </div>
-    </div>
-    <div class="flex flex-col items-center text-center">
-        <h2 class="text-[2rem] font-[500]">O casamento acontecerá em:</h2>
-        <h3 class="text-[2rem]">{{ timeTillWedding() }}</h3>
+        <div class="photos flex flex-col md:flex-row items-center relative bg-[#6F9D63] min-h-[50vh]">
+            <div class="rotate-10">
+                <app-photo src="assets/PRE_CONVITE.JPG" description="Pré-convite"/>
+            </div>
+            <div class="-rotate-12">
+                <app-photo src="assets/PRE_WEDDING.JPEG" description="Pré-wedding"/>
+            </div>
+        </div>
     </div>
 </div>

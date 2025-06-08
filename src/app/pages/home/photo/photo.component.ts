@@ -9,4 +9,5 @@ import { Component, computed, input } from '@angular/core';
 })
 export class PhotoComponent {
     public src = input.required<string>();
+    public description = input.required<string>();
 }

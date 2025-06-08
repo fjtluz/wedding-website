@@ -1,1 +1,20 @@
 @use "tailwindcss";
+
+.flex-col-center {
+  @apply flex flex-col justify-center items-center;
+}
+
+@font-face {
+  font-family: Malibu;
+  src: url('assets/Malibu_Slant.woff');
+}
+
+@font-face {
+  font-family: Garamond;
+  src: url('assets/Garamond.ttf');
+}
+
+@font-face {
+  font-family: Questrial;
+  src: url('assets/Questrial-Regular.ttf');
+}
