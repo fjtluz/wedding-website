@@ -30,7 +30,7 @@ jobs:
     - name: Build
       run: |
         npm install
-        npm run build
+        npm run build -- --base-href /wedding-website/
 
     - name: Setup Pages
       uses: actions/configure-pages@v5
