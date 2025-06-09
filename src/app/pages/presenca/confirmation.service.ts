@@ -9,7 +9,7 @@ export class ConfirmationService {
     private http = inject(HttpClient);
 
     public respondeConfirmacao(guest_name: string, will_attend: boolean) {
-        return this.http.post('http://meumatrimonio.com.br:8000/confirmation', 
+        return this.http.post('https://meumatrimonio.com.br/confirmation', 
             {
                 guest_name,
                 will_attend

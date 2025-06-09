@@ -1,16 +1,16 @@
 <div class="bg-[url('/assets/background.jpg')] flex flex-col h-[92vh]">
-    <div class="w-full h-[32vh] flex flex-col justify-center items-center my-[20px]">
+    <div class="w-full h-[320px] flex flex-col justify-center items-center my-[20px]">
         <h1 class="font-[Garamond] text-[3.5rem] sm:text-[6rem] text-[#6F9D63] text-center leading-none">Confirmação de presença</h1>
-        <p class="pt-[20px] font-[Garamond] text-[2.5rem] text-center">A presença deve ser confirmada até 01/OUT/2025</p>
+        <p class="pt-[20px] font-[Garamond] text-[2.5rem] text-center">A presença deve ser confirmada até<br/>01/OUT/2025</p>
     </div>
-    <div class="bg-[#6F9D63] w-full h-[30vh] flex flex-col justify-center items-center gap-[20px] font-[Questrial]">
+    <div class="bg-[#6F9D63] w-full h-[300px] flex flex-col justify-center items-center gap-[20px] font-[Questrial]">
         <div class="flex flex-col gap-[3px]">
             <label for="completeName" class="text-white text-[18pt]">Nome completo:</label>
             <input 
                 [(ngModel)]="guestName" id="completeName" 
                 class="bg-white confirmation-input border 
                        border-[lightgray] py-[10px] px-[7px] 
-                       rounded-lg w-[400px] text-center"
+                       rounded-lg w-[90vw] sm:w-[400px] text-center"
                 [ngClass]="nameNotFound ? 'not-found' : undefined"                
             />
             @if (nameNotFound) {
@@ -20,7 +20,7 @@
                 </div>
             }
         </div>
-        <div class="w-[400px] flex items-center gap-[10px] justify-between">
+        <div class="w-[90vw] sm:w-[400px] flex flex-col sm:flex-row items-center gap-[10px] justify-between">
             <label class="text-white text-[18pt]">Você irá ao evento?</label>
             <div class="inline-flex justify-between gap-[10px]">
                 <label class="flex items-center">
@@ -33,7 +33,7 @@
                 </label>
             </div>
         </div>
-        <div (click)="handleConfirmation()"  class="confirmation-button w-[400px] h-[50px] border border-white rounded text-white flex justify-center items-center hover:cursor-pointer">
+        <div (click)="handleConfirmation()"  class="confirmation-button w-[90vw] sm:w-[400px] h-[50px] border border-white rounded text-white flex justify-center items-center hover:cursor-pointer">
             <span class="text-[18pt]">Responder</span>
         </div>
     </div>

@@ -21,7 +21,7 @@
 }
 
 <ng-template #pages>
-    <li routerLink="/home">Home</li>
-    <li routerLink="/presenca">Presença</li>
-    <li routerLink="/presentes">Presentes</li>
+    <li routerLink="/home" (click)="displayOptionsMobile = false">Home</li>
+    <li routerLink="/presenca" (click)="displayOptionsMobile = false">Presença</li>
+    <li routerLink="/presentes" (click)="displayOptionsMobile = false">Presentes</li>
 </ng-template>
