@@ -32,6 +32,10 @@ jobs:
         npm install
         npm run build
 
+    - name: Move 404 Page
+      run: |
+        cp -p src/404.html dist/wedding-website/browser
+
     - name: Setup Pages
       uses: actions/configure-pages@v5
 
