@@ -1,4 +1,4 @@
-import { Component, computed, input, signal } from "@angular/core";
+import { Component, computed, effect, input, signal } from "@angular/core";
 import { SectionOptions } from "../fotos";
 import { Directive, ElementRef, AfterViewInit, HostListener, OnDestroy } from '@angular/core';
 
@@ -64,12 +64,22 @@ export class Galeria {
 
   selectedPhoto = signal<number>(0);
 
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (this.selectedPhoto() === 0) return;
+
+    if (event.key === 'ArrowRight') this.goToNextPhoto(event);
+    if (event.key === 'ArrowLeft') this.goToPreviousPhoto(event);
+    if (event.key === 'Escape') this.closeModal();
+  }
+
   closeModal() {
     this.selectedPhoto.set(0);
   }
 
   goToPreviousPhoto(event: Event) {
     event.stopPropagation();
+
     this.selectedPhoto.update((curr) => curr === this.range()[0] ? this.range()[1] : curr - 1);
     console.log(this.selectedPhoto());
   }
@@ -77,6 +87,17 @@ export class Galeria {
   goToNextPhoto(event: Event) {
     event.stopPropagation();
     this.selectedPhoto.update((curr) => curr === this.range()[1] ? this.range()[0] : curr + 1);
+  }
+
+  handleKeyPress(event: KeyboardEvent) {
+    console.log(event);
+    if (event.key === 'ArrowLeft') {
+      this.goToPreviousPhoto(event);
+    } else if (event.key === 'ArrowRight') {
+      this.goToNextPhoto(event);
+    } else if (event.key === 'Esc') {
+      this.closeModal();
+    }
   }
 
 }
