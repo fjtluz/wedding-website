@@ -1,0 +1,38 @@
+<div class="w-full flex justify-center px-4 py-[16px]">
+<div class="gallery-container">
+  @for (photo of fotoIdList(); track photo) {
+    <div class="masonry-item" appMasonryItem>
+      <div class="content">
+        <img
+           (click)="selectedPhoto.set(photo)"
+           class="w-full h-auto block hover:cursor-pointer"
+           src="https://media.githubusercontent.com/media/fjtluz/large-storage/refs/heads/main/casamento/{{fotoGroup()}}/{{photo.toString().padStart(3, '0')}}.jpg">
+      </div>
+    </div>
+  }
+</div>
+</div>
+
+@if (selectedPhoto() !== 0) {
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+       (click)="closeModal()">
+
+    <button (click)="closeModal()"
+            class="absolute right-4 top-20 text-white text-4xl hover:text-gray-300 z-[60] hover:cursor-pointer">
+      &times;
+    </button>
+
+    <button (click)="goToPreviousPhoto($event)" class="absolute left-4 text-white p-4 hover:bg-white/10 rounded-full transition hover:cursor-pointer">
+      <span class="">&lt;</span>
+    </button>
+
+    <button (click)="goToNextPhoto($event)" class="absolute right-4 text-white p-4 hover:bg-white/10 rounded-full transition hover:cursor-pointer">
+      <span class="">&gt;</span>
+    </button>
+
+    <div class="max-w-5xl max-h-[90vh] p-4" (click)="$event.stopPropagation()">
+      <img src="https://media.githubusercontent.com/media/fjtluz/large-storage/refs/heads/main/casamento/{{fotoGroup()}}/{{selectedPhoto().toString().padStart(3, '0')}}.jpg"
+           class="max-w-full max-h-[80vh] object-contain rounded-sm shadow-2xl" />
+    </div>
+  </div>
+}

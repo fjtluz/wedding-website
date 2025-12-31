@@ -12,7 +12,7 @@
     </button>
 </div>
 @if (displayOptionsMobile) {
-<ul class="menu fixed z-100 top-[8vh] lg:hidden h-[8vh] w-full bg-[#6F9D63] 
+<ul class="menu fixed z-100 top-[8vh] lg:hidden h-[8vh] w-full bg-[#6F9D63]
            flex flex-row justify-center gap-[30px] items-center text-white font-[800]
            border border-transparent border-y-white font-[Questrial]
            text-center">
@@ -22,6 +22,9 @@
 
 <ng-template #pages>
     <li routerLink="/home" (click)="displayOptionsMobile = false">Home</li>
+    <!--
     <li routerLink="/presenca" (click)="displayOptionsMobile = false">Presença</li>
     <li routerLink="/presentes" (click)="displayOptionsMobile = false">Presentes</li>
+    -->
+    <li routerLink="/fotos" (click)="displayOptionsMobile = false">Fotos</li>
 </ng-template>

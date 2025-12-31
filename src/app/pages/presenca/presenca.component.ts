@@ -9,10 +9,10 @@ import {NgClass} from '@angular/common';
   selector: 'app-presenca',
   imports: [FormsModule, NgClass],
   templateUrl: './presenca.component.html',
-  styleUrl: './presenca.component.scss'
+  styleUrl: './presenca.component.scss',
 })
 export class PresencaComponent {
-    
+
     private confirmationService = inject(ConfirmationService);
     private destroyRef = inject(DestroyRef);
 

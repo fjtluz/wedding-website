@@ -1,0 +1,8 @@
+<header class="flex justify-center w-full">
+  @let sectionBaseClass = 'w-full text-center text-white bg-[#6F9D63] border border-y-[white] border-x-[transparent] hover:cursor-pointer py-2';
+  <section [class]="sectionBaseClass" [class.section-selected]="selectedSection() === 'lembre-lembre'" (click)="selectedSection.set('lembre-lembre')">Lembre-Lembre</section>
+  <section [class]="sectionBaseClass" [class.section-selected]="selectedSection() === 'fotografo'" (click)="selectedSection.set('fotografo')">Fotografo</section>
+</header>
+<div class="bg-[url('/assets/background.jpg')] h-dvh">
+  <router-outlet />
+</div>
