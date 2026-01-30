@@ -50,6 +50,15 @@ export class MasonryItemDirective implements AfterViewInit, OnDestroy {
   }
 }
 
+type PhotoRange = {
+  from: number;
+  to: number;
+  skipping?: {
+    from: number;
+    to: number;
+  }[]
+}
+
 @Component({
   templateUrl: './galeria.html',
   styleUrl: './galeria.css',
@@ -58,9 +67,11 @@ export class MasonryItemDirective implements AfterViewInit, OnDestroy {
 export class Galeria {
 
   fotoGroup = input.required<SectionOptions>();
-  range = input.required<[number, number]>();
+  range = input.required<PhotoRange>();
 
-  fotoIdList = computed(() => Array(this.range()[1] - this.range()[0]).fill(0).map((_, index) => index + this.range()[0]));
+  fotoIdList = computed(() => Array(this.range().to - this.range().from).fill(0)
+    .map((_, index) => index + this.range().from)
+    .filter((value) => this.range().skipping?.every((skip) => value < skip.from || value > skip.to)));
 
   selectedPhoto = signal<number>(0);
 
@@ -80,13 +91,13 @@ export class Galeria {
   goToPreviousPhoto(event: Event) {
     event.stopPropagation();
 
-    this.selectedPhoto.update((curr) => curr === this.range()[0] ? this.range()[1] : curr - 1);
+    this.selectedPhoto.update((curr) => this.fotoIdList()[0] === curr ? this.fotoIdList()[this.fotoIdList().length - 1] : curr - 1);
     console.log(this.selectedPhoto());
   }
 
   goToNextPhoto(event: Event) {
     event.stopPropagation();
-    this.selectedPhoto.update((curr) => curr === this.range()[1] ? this.range()[0] : curr + 1);
+    this.selectedPhoto.update((curr) => this.fotoIdList()[this.fotoIdList().length - 1] === curr ? this.fotoIdList()[0] : curr + 1);
   }
 
   handleKeyPress(event: KeyboardEvent) {
